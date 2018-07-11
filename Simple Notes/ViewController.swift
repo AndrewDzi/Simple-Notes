@@ -26,10 +26,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return (cell)
     }
     
-
+    //MARK: Cofigure slide-to-delete cell
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            listOfNotes.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    //MARK: Update data when view appear
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 
     
