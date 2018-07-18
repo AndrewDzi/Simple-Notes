@@ -7,30 +7,48 @@
 //
 
 import UIKit
+import CoreData
 
 class NewNoteViewController: UIViewController {
-
-    @IBOutlet weak var newNoteTextView: UITextView!
     
-    
+    @IBOutlet weak var noteTextView: UITextView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
-    }
-
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //Observe text editing status, save when edeting did end
+        NotificationCenter.default.addObserver(self, selector: #selector(saveNewNote(ncParam:)), name: NSNotification.Name.UITextViewTextDidEndEditing, object: nil)
         
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        //Show keyboard instantly
+        noteTextView.becomeFirstResponder()
     }
-
-    @IBAction func doneButton(_ sender: Any) {
+    
+    
+    @IBAction func saveButton(_ sender: Any) {
+        if noteTextView.text.count >= 1 {
+            //Show previous VC
+            navigationController?.popViewController(animated: true)
+        }
         
     }
     
-
+    @objc func saveNewNote(ncParam: NSNotification) {
+        if noteTextView.text.count >= 1 {
+            saveNoteToCoreData(note: noteTextView.text!)
+        }
+    }
+    
+    //MARK: - Save Notes to CoreData
+    func saveNoteToCoreData(note: String) {
+        
+        //Prepare before saving to CoreData
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let notes = NotesEntity(context: context)
+        notes.noteAttribute = noteTextView.text!
+        
+        //Save to CoreData
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
 }
+
+

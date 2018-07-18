@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4915F28A20FB5CF900C7B2E9 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4915F28920FB5CF900C7B2E9 /* NoteViewController.swift */; };
 		4920292820F60CDA0032DFB7 /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4920292720F60CDA0032DFB7 /* NewNoteViewController.swift */; };
+		492160C720F96712009366A3 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492160C620F96712009366A3 /* NoteCell.swift */; };
 		49251CD920F4CB76005D6528 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49251CD820F4CB76005D6528 /* AppDelegate.swift */; };
 		49251CDB20F4CB76005D6528 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49251CDA20F4CB76005D6528 /* ViewController.swift */; };
 		49251CDE20F4CB76005D6528 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49251CDC20F4CB76005D6528 /* Main.storyboard */; };
@@ -17,7 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4915F28920FB5CF900C7B2E9 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		4920292720F60CDA0032DFB7 /* NewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
+		492160C620F96712009366A3 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		49251CD520F4CB76005D6528 /* Simple Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Notes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49251CD820F4CB76005D6528 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49251CDA20F4CB76005D6528 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +65,8 @@
 				49251CD820F4CB76005D6528 /* AppDelegate.swift */,
 				49251CDA20F4CB76005D6528 /* ViewController.swift */,
 				4920292720F60CDA0032DFB7 /* NewNoteViewController.swift */,
+				492160C620F96712009366A3 /* NoteCell.swift */,
+				4915F28920FB5CF900C7B2E9 /* NoteViewController.swift */,
 				49251CDC20F4CB76005D6528 /* Main.storyboard */,
 				49251CE220F4CB77005D6528 /* Assets.xcassets */,
 				49251CE420F4CB77005D6528 /* LaunchScreen.storyboard */,
@@ -143,7 +149,9 @@
 			files = (
 				49251CDB20F4CB76005D6528 /* ViewController.swift in Sources */,
 				4920292820F60CDA0032DFB7 /* NewNoteViewController.swift in Sources */,
+				492160C720F96712009366A3 /* NoteCell.swift in Sources */,
 				49251CD920F4CB76005D6528 /* AppDelegate.swift in Sources */,
+				4915F28A20FB5CF900C7B2E9 /* NoteViewController.swift in Sources */,
 				49251CE120F4CB76005D6528 /* Simple_Notes.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
