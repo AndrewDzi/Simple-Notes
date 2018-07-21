@@ -92,8 +92,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         
-        
-        
+           
 //        let funds = NSEntityDescription.insertNewObject(forEntityName: "NotesEntity", into: context)
         
 //        funds.setValue(listOfNotes, forKey: "notesAttribute")
