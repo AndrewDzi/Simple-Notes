@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-
+var listOfNotes = [NotesEntity]()
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -71,7 +71,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             print("Fetching Notes from CoreData are failed")
         }
     }
+   
     
+    override func prepare(for segue: UIStoryboardSegue,sender: Any?) {
+        if segue.identifier == "note" {
+            let noteVC = segue.destination as! NoteViewController
+            let tappedCellIndex = tableView.indexPathForSelectedRow?.row
+            print(tappedCellIndex!)
+            noteVC.text = listOfNotes[tappedCellIndex!].noteAttribute!
+        }
+        
+    }
     //MARK: - Save Notes to CoreData
 //    func saveNotesToCoreData() {
 //        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
