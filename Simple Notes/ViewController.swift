@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     
-    var listOfNotes = [NotesEntity]()
+    
     
     
     override func viewDidLoad() {
@@ -57,13 +57,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         getNotesFromCoreData()
         tableView.reloadData()
     }
-
+    
     
     //MARK: - CoreData
     
     //MARK: - GET Notes from CoreData
     func getNotesFromCoreData() {
-       let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         do {
             listOfNotes = try context.fetch(NotesEntity.fetchRequest())
@@ -71,39 +71,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             print("Fetching Notes from CoreData are failed")
         }
     }
-   
+    
     
     override func prepare(for segue: UIStoryboardSegue,sender: Any?) {
         if segue.identifier == "note" {
             let noteVC = segue.destination as! NoteViewController
             let tappedCellIndex = tableView.indexPathForSelectedRow?.row
             print(tappedCellIndex!)
+            noteVC.noteIndex = tappedCellIndex!
             noteVC.text = listOfNotes[tappedCellIndex!].noteAttribute!
         }
         
     }
-    //MARK: - Save Notes to CoreData
-//    func saveNotesToCoreData() {
-//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//
-//        let notes = NotesEntity(context: context)
-//        notes.noteAttribute = listOfNotes
-    
-        
-        
-//        let funds = NSEntityDescription.insertNewObject(forEntityName: "NotesEntity", into: context)
-        
-//        funds.setValue(listOfNotes, forKey: "notesAttribute")
-//
-//        do
-//        {
-//            try context.save()
-//            print("*** Name DATA SAVED ***")
-//        }
-//        catch {
-//
-//        }
-//    }
 }
 
 

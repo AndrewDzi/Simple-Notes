@@ -9,29 +9,53 @@
 import UIKit
 
 class NoteViewController: UIViewController {
-
+    
     
     @IBOutlet weak var noteTextView: UITextView!
+    
     var text = String()
+    var noteIndex = Int()
+    var noteBefore = Int()
     
     override func viewDidLoad() {
-        noteTextView.text = text
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        noteTextView.text = text
+        noteTextView.isEditable = true
+        noteBefore = noteTextView.text.count
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(saveNewNote(ncParam:)), name: NSNotification.Name.UITextViewTextDidEndEditing, object: nil)
+    }
+    
+    func saveNoteToCoreData(note: String) {
+        
+        //Prepare before saving to CoreData
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let notes = NotesEntity(context: context)
+        notes.noteAttribute = noteTextView.text!
+        
+        //Save to CoreData
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
 
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func deleteNote() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let note = listOfNotes[noteIndex]
+        context.delete(note)
+        do {
+            listOfNotes = try context.fetch(NotesEntity.fetchRequest())
+        } catch {
+            
+        }
     }
-    */
+    
+    @objc func saveNewNote(ncParam: NSNotification) {
+        
+        if noteBefore != noteTextView.text.count {
+            deleteNote()
+            saveNoteToCoreData(note: noteTextView.text!)
+        }
+        
 
+    }
 }
