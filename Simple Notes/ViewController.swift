@@ -16,8 +16,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -42,18 +40,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if editingStyle == UITableViewCellEditingStyle.delete {
             let note = listOfNotes[indexPath.row]
             context.delete(note)
-            do {
-                listOfNotes = try context.fetch(NotesEntity.fetchRequest())
-            } catch {
-                
-            }
         }
-        tableView.reloadData()
+        getNotesFromCoreData()
+        self.tableView.reloadData() 
     }
     
     //MARK: Update data when view did appear
     override func viewDidAppear(_ animated: Bool) {
-        //getNotesFromCoreData()
         getNotesFromCoreData()
         tableView.reloadData()
     }
@@ -71,7 +64,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             print("Fetching Notes from CoreData are failed")
         }
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue,sender: Any?) {
         if segue.identifier == "note" {

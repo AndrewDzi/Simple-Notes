@@ -70,7 +70,7 @@
                                         <connections>
                                             <outlet property="noteHeader" destination="U9k-Bc-SlR" id="DYP-Ei-BFR"/>
                                             <outlet property="noteText" destination="1hB-1Y-g9q" id="PlO-fb-1mu"/>
-                                            <segue destination="vuG-F9-YpE" kind="show" identifier="note" id="539-Q8-c1C"/>
+                                            <segue destination="vuG-F9-YpE" kind="show" identifier="note" id="nPj-ii-VOk"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -102,7 +102,7 @@
             </objects>
             <point key="canvasLocation" x="812" y="735.96059113300498"/>
         </scene>
-        <!--Note View Controller-->
+        <!--Note-->
         <scene sceneID="kpf-u4-PSz">
             <objects>
                 <viewController id="vuG-F9-YpE" customClass="NoteViewController" customModule="Simple_Notes" customModuleProvider="target" sceneMemberID="viewController">
@@ -134,6 +134,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Uf0-hX-3lu"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Note" id="ERq-lR-Iho">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Awu-pm-wwX">
+                            <connections>
+                                <action selector="shareButton:" destination="vuG-F9-YpE" id="F7w-wR-5wU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="noteTextView" destination="RDl-dP-8bW" id="Gck-lt-B5h"/>
                     </connections>

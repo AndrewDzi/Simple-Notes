@@ -27,6 +27,12 @@ class NoteViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(saveNewNote(ncParam:)), name: NSNotification.Name.UITextViewTextDidEndEditing, object: nil)
     }
     
+    @IBAction func shareButton(_ sender: Any) {
+      let activityViewController = UIActivityViewController(activityItems: [noteTextView.text ?? "nil"], applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    
     func saveNoteToCoreData(note: String) {
         
         //Prepare before saving to CoreData
@@ -55,7 +61,5 @@ class NoteViewController: UIViewController {
             deleteNote()
             saveNoteToCoreData(note: noteTextView.text!)
         }
-        
-
     }
 }
